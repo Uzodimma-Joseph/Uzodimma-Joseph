@@ -1,37 +1,68 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/Uzodimma-Joseph/Uzodimma-Joseph/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Uzodimma-Joseph/Uzodimma-Joseph/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="" content="">
+    <title></title>
+    <style type="text/css">
+      input{
+        width: 100%;
+      }
+      fieldset{
+        background-color: black;
+        height: 70px;
+        width: 270px;
+        position: relative;
+        border-radius: 15px;
+      }
+      span{
+        height: 50px;
+        width: 50px;
+        background-color: none;
+        border: none;
+        font-size: 20px;
+        color: rgb(0, 100, 200);
+      }
+    </style>
+  </head>
+  <body>
+  
+    <fieldset>
+      <center>
+    <input type="range" id="rang" min="0" max="60" value="" onchange="move()"/>
+    <br/>
+  <span id="view">00:00:00</span>
+  </center>
+    </fieldset>
+    <script>
+    var today = new Date();
+    var hr = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    
+    var range = document.querySelector("#rang");
+    
+    var view = document.querySelector("#view");
+    
+    function myFunc(){
+      sec++;
+      if(sec == 60){
+        min++;
+        sec = 00;
+      }
+      if(min == 60){
+        hr++;
+        min = 00;
+        sec = 00;
+      }
+      view.innerHTML = "Hour" + " " + hr + ":" + min + " " + "Minute";
+    } 
+      setInterval("myFunc()", 1000);
+      
+      function updateProgressValue(){
+        range.value = sec;
+      }
+    setInterval("updateProgressValue()", 1000);
+    </script>
+  </body>
+</html>
